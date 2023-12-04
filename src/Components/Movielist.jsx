@@ -8,7 +8,11 @@ import Cards from "./Card"
 const MovieList = () => {
     
     const [movieList, setMovieList] = useState([])
-    const {type} = useParams()
+    let {type} = useParams()
+    let {page} = useParams();
+     
+    if(!page)  page = 1;
+    if(!type) type = "popular";
 
     useEffect(() => {
         getData()
@@ -19,7 +23,8 @@ const MovieList = () => {
     }, [type])
 
     const getData = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+        // https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=2
+        fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${page}`)
         .then(res => res.json())
         .then(data => setMovieList(data.results))
     }
@@ -34,6 +39,21 @@ const MovieList = () => {
                     ))
                 }
             </div>
+
+               <div style={{width:"100%",background:"black",height:"60px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+               <button onClick={()=>{
+                if(page>1){
+                    page = Number(page)-1;
+                    window.location=`/movies/${type}/${page}`
+                }
+                }}>prev</button>
+               <button onClick={()=>{
+                console.log(movieList.total_pages)
+                page = Number(page)+1;
+                window.location=`/movies/${type?type:"popular"}/${page}`
+               }}>next</button>
+               </div>
+          
         </div>
     )
 }

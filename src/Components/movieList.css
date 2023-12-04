@@ -1,5 +1,5 @@
 .movie__list {
-    padding:0;
+    padding:2rem;
 }
 
 .list__title {
@@ -8,7 +8,20 @@ margin:  2.5rem;
 }
 
 .list__cards {
+    margin: 2rem;
     display: flex;
     flex-wrap: wrap ;
     justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .movie__list{
+        padding: 0;
+    }
+    .list__cards {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap ;
+        justify-content: space-evenly;
+    }
 }

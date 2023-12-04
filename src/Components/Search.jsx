@@ -14,8 +14,9 @@ const options = {
 const SearchComp = () => {
     
     const [movieList, setMovieList] = useState([])
-    const {search} = useParams()
-   
+    const {search} = useParams();
+    let {page} = useParams();
+
     console.log(search,'lllllllliii')
     useEffect(() => {
         getData()
@@ -27,7 +28,7 @@ const SearchComp = () => {
 
     
     const getData = () => {
-   fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
+   fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`, options)
    .then(response => response.json())
    .then(response => {
     console.log(response)
@@ -45,6 +46,19 @@ const SearchComp = () => {
                     ))
                 }
             </div>
+
+            <div style={{width:"100%",background:"black",height:"60px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+               <button onClick={()=>{
+                if(page>1){
+                    page = Number(page)-1;
+                    window.location=`/movies/${type}/${page}`
+                }
+                }}>prev</button>
+               <button onClick={()=>{
+                page = Number(page)+1;
+                window.location=`/find/${search}/${page}`
+               }}>next</button>
+               </div>
         </div>
     )
 }

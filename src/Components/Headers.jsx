@@ -16,13 +16,13 @@ const Header = () => {
                         alt="IMDb Logo"
                     />
                 </Link>
-                <Link to="/movies/popular" style={{ textDecoration: "none" }}>
+                <Link to="/movies/popular/1" style={{ textDecoration: "none" }}>
                     <span>Popular</span>
                 </Link>
-                <Link to="/movies/top_rated" style={{ textDecoration: "none" }}>
+                <Link to="/movies/top_rated/1" style={{ textDecoration: "none" }}>
                     <span>Top Rated</span>
                 </Link>
-                <Link to="/movies/upcoming" style={{ textDecoration: "none" }}>
+                <Link to="/movies/upcoming/1" style={{ textDecoration: "none" }}>
                     <span>Upcoming</span>
                 </Link>
             </div>
@@ -36,7 +36,7 @@ const Header = () => {
                     // You can add more attributes or handle input events as needed
                 />
                 {searchValue !== "" ? (
-                    <Link to={`/find/${searchValue}`}>
+                    <Link to={`/find/${searchValue}/1`}>
                         <button onClick={()=>{setSearch("")}} type="button">Search</button>
                     </Link>
                 ) : (
