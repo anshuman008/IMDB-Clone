@@ -76,13 +76,55 @@ button {
 
     a > span {
         margin: 10px; /* Adjusted margin for better spacing */
-        font-size: 1.2rem; /* Adjusted font size */
+        font-size: 1.1rem; /* Adjusted font size */
     }
 
     .header__icon {
         position: relative;
         left: 0;
-        width: 80px; /* Adjusted width for better spacing */
+        width: 70px; /* Adjusted width for better spacing */
+    }
+
+    .user__avatar {
+        font-size: 1.5rem;
+    }
+
+    .headerLeft input {
+        width: 100%; /* Full-width input for mobile */
+        margin: 1rem 0;
+    }
+
+    .headerLeft button {
+        width: 100%; /* Full-width button for mobile */
+        margin: 0.5rem 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.5rem;
+        padding: 0.5rem 0;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .headerLeft,
+    .headerRight {
+        margin-bottom: 1rem;
+    }
+
+    a > span {
+        margin: 10px; /* Adjusted margin for better spacing */
+        font-size: 1rem; /* Adjusted font size */
+    }
+
+    .header__icon {
+        position: relative;
+        left: 0;
+        width: 60px; /* Adjusted width for better spacing */
     }
 
     .user__avatar {
