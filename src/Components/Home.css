@@ -1,0 +1,100 @@
+/* Base styles for larger screens */
+.posterImage {
+    height: 600px;
+}
+
+.posterImage > img {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.posterImage__overlay {
+    position: absolute;
+    padding: 5rem;
+    bottom: 0px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
+    opacity: 1;
+    transition: opacity .3s;
+}   
+
+.posterImage__overlay:hover {
+    opacity: 1;
+}
+
+/* Common styles for both large screens and mobile screens */
+.posterImage__title,
+.posterImage__runtime,
+.posterImage__rating,
+.posterImage__description {
+    width: 100%;
+    text-align: center;
+}
+
+.posterImage__title {
+    font-weight: 900;
+    font-size: 4rem;
+    margin-bottom: 0.4rem;
+}
+
+.posterImage__runtime {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.posterImage__rating {
+    margin-top: 0.5rem;
+}
+
+.posterImage__description {
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.input-section{
+    margin-top: 20px;
+    position: absolute;
+    right: 30px;
+}
+/* Responsive styles for mobile devices */
+@media screen and (max-width: 768px) {
+    .posterImage {
+        height: 300px;
+    }
+    .input-section{
+        position: relative;
+        right: 0;
+    }
+  
+    .posterImage__overlay {
+        padding: 2rem;
+        height: 100%;
+        align-items: center;
+    }
+
+    .posterImage__title {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    .posterImage__runtime {
+        font-size: 10px;
+        margin-bottom: 0.2rem;
+    }
+
+    .posterImage__rating {
+        margin-top: 0.3rem;
+    }
+
+    .posterImage__description {
+        font-size: 10px;
+        margin-bottom: 0.5rem;
+    }
+}
