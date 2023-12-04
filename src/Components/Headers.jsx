@@ -37,7 +37,7 @@ const Header = () => {
                 />
                 {searchValue !== "" ? (
                     <Link to={`/find/${searchValue}`}>
-                        <button type="button">Search</button>
+                        <button onClick={()=>{setSearch("")}} type="button">Search</button>
                     </Link>
                 ) : (
                     <button type="button" disabled>
