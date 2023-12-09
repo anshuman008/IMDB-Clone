@@ -12,6 +12,8 @@ const MovieList = () => {
     let {page} = useParams();
      
     if(!page)  page = 1;
+    let [pageNo,setPage] = useState(page);
+
     if(!type) type = "popular";
 
     useEffect(() => {
@@ -20,11 +22,12 @@ const MovieList = () => {
 
     useEffect(() => {
         getData()
-    }, [type])
+    }, [type,pageNo])
 
     const getData = () => {
+        console.log(pageNo,'kkkookoki')
         // https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=2
-        fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${page}`)
+        fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${pageNo}`)
         .then(res => res.json())
         .then(data => setMovieList(data.results))
     }
@@ -42,15 +45,18 @@ const MovieList = () => {
 
                <div style={{width:"100%",background:"black",height:"60px",display:"flex",alignItems:"center",justifyContent:"center"}}>
                <button onClick={()=>{
-                if(page>1){
-                    page = Number(page)-1;
-                    window.location=`/movies/${type}/${page}`
+                let  num = Number(pageNo);
+                if(num>1){
+                    setPage(num-1);
                 }
+                    // window.location=`/movies/${type}/${page}`
+                // }
                 }}>prev</button>
+                <h2 style={{marginLeft:"10px"}}>{pageNo}</h2>
                <button onClick={()=>{
-                console.log(movieList.total_pages)
-                page = Number(page)+1;
-                window.location=`/movies/${type?type:"popular"}/${page}`
+                let  num = Number(pageNo);
+                setPage(num+1)
+                // window.location=`/movies/${type?type:"popular"}/${page}`
                }}>next</button>
                </div>
           

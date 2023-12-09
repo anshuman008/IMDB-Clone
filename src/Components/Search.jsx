@@ -17,6 +17,9 @@ const SearchComp = () => {
     const {search} = useParams();
     let {page} = useParams();
 
+    if(!page)  page = 1;
+    let [pageNo,setPage] = useState(page);
+
     console.log(search,'lllllllliii')
     useEffect(() => {
         getData()
@@ -24,11 +27,11 @@ const SearchComp = () => {
 
     useEffect(() => {
         getData()
-    }, [search])
+    }, [search,pageNo])
 
     
     const getData = () => {
-   fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`, options)
+   fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${pageNo}`, options)
    .then(response => response.json())
    .then(response => {
     console.log(response)
@@ -49,14 +52,15 @@ const SearchComp = () => {
 
             <div style={{width:"100%",background:"black",height:"60px",display:"flex",alignItems:"center",justifyContent:"center"}}>
                <button onClick={()=>{
-                if(page>1){
-                    page = Number(page)-1;
-                    window.location=`/movies/${type}/${page}`
-                }
+               let  num = Number(pageNo);
+               if(num>1){
+                   setPage(num-1);
+               }
                 }}>prev</button>
+                  <h2 style={{marginLeft:"10px"}}>{pageNo}</h2>
                <button onClick={()=>{
-                page = Number(page)+1;
-                window.location=`/find/${search}/${page}`
+                  let  num = Number(pageNo);
+                  setPage(num+1)
                }}>next</button>
                </div>
         </div>
