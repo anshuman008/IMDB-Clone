@@ -27,7 +27,7 @@ const Header = () => {
                 </Link>
             </div>
             
-            <div className="input-section">
+            <div className="Search-section">
                 <input
                     value={searchValue}
                     onChange={(e) => setSearch(e.target.value)}
