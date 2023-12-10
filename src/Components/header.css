@@ -54,11 +54,16 @@ button {
     cursor: pointer;
 }
 .input-section{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 /* Responsive styles for mobile devices */
 @media screen and (max-width: 768px) {
+
+.input-section{
+    margin-bottom: 20px;
+}
+    
     .header {
         display: flex;
         align-items: center;
